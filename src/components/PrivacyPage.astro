@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import productIcon from '../assets/icon128.png';
+import { SITE } from '../consts';
+import { buildUrl, getTranslation, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getTranslation(lang);
+const base = import.meta.env.BASE_URL;
+const homeUrl = buildUrl(base, lang, '/');
+const frPrivacyUrl = buildUrl(base, 'fr', '/privacy/');
+const enPrivacyUrl = buildUrl(base, 'en', '/privacy/');
+const pagePath = lang === 'fr' ? '/privacy/' : '/en/privacy/';
+---
+
+<Layout title={t.meta.privacyTitle} description={t.meta.privacyDescription} path={pagePath} lang={lang}>
+  <main class="page">
+    <header class="site-header">
+      <a class="site-brand" href={homeUrl}>
+        <img src={productIcon.src} alt="" width="40" height="40" />
+        <span>{SITE.productName}</span>
+      </a>
+
+      <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
+        <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frPrivacyUrl}>FR</a>
+        <a class:list={["lang-pill", { active: lang === 'en' }]} href={enPrivacyUrl}>EN</a>
+      </nav>
+    </header>
+
+    <section class="policy-hero">
+      <p class="eyebrow">{t.privacyPage.eyebrow}</p>
+      <h1>{t.privacyPage.title}</h1>
+      <p class="intro">{t.privacyPage.intro}</p>
+      <p class="meta">{t.privacyPage.updated}</p>
+      <div class="actions">
+        <a class="button secondary" href={homeUrl}>{t.nav.backHome}</a>
+      </div>
+    </section>
+
+    <section class="policy-card">
+      {t.privacyPage.sections.map((section) => (
+        <Fragment>
+          <h2>{section.title}</h2>
+          {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+          {section.bullets && (
+            <ul>
+              {section.bullets.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+        </Fragment>
+      ))}
+
+      <h2>{t.privacyPage.contactTitle}</h2>
+      <p>{t.privacyPage.contactLead}</p>
+      <ul>
+        <li>
+          {t.privacyPage.supportLabel}: <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
+        </li>
+        <li>
+          {t.privacyPage.websiteLabel}:{' '}
+          <a href={`https://${SITE.domain}`} target="_blank" rel="noreferrer">{SITE.domain}</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+</Layout>

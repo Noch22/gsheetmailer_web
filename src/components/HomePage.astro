@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import productIcon from '../assets/icon128.png';
+import { SITE } from '../consts';
+import { buildUrl, getTranslation, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getTranslation(lang);
+const base = import.meta.env.BASE_URL;
+const homeUrl = buildUrl(base, lang, '/');
+const privacyUrl = buildUrl(base, lang, '/privacy/');
+const frHomeUrl = buildUrl(base, 'fr', '/');
+const enHomeUrl = buildUrl(base, 'en', '/');
+const pagePath = lang === 'fr' ? '/' : '/en/';
+---
+
+<Layout title={t.meta.homeTitle} description={t.meta.homeDescription} path={pagePath} lang={lang}>
+  <main class="page">
+    <header class="site-header">
+      <a class="site-brand" href={homeUrl}>
+        <img src={productIcon.src} alt="" width="40" height="40" />
+        <span>{SITE.productName}</span>
+      </a>
+
+      <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
+        <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frHomeUrl}>FR</a>
+        <a class:list={["lang-pill", { active: lang === 'en' }]} href={enHomeUrl}>EN</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">{t.hero.eyebrow}</p>
+        <h1>{t.hero.title}</h1>
+        <p>{t.hero.text}</p>
+
+        <div class="actions">
+          <a class="button primary" href={SITE.extensionUrl} target="_blank" rel="noreferrer">
+            {t.hero.primaryCta}
+          </a>
+          <a class="button secondary" href={privacyUrl}>{t.hero.secondaryCta}</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Product overview">
+        <h2>{t.why.title}</h2>
+        <ul class="feature-list">
+          {t.why.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </aside>
+    </section>
+
+    <section class="panel">
+      <h2>{t.how.title}</h2>
+      <div class="grid">
+        {t.how.steps.map((step, index) => (
+          <div class="step">
+            <strong>{t.how.stepLabel} {index + 1}</strong>
+            <strong>{step.title}</strong>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>{t.workflow.title}</h2>
+      <div class="grid">
+        {t.workflow.cards.map((card) => (
+          <div class="stat">
+            <strong>{card.title}</strong>
+            <p>{card.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 {SITE.productName} • <a href={privacyUrl}>{t.footer.privacy}</a>
+  </footer>
+</Layout>
