@@ -1,46 +1,63 @@
-# Astro Starter Kit: Basics
+# GSheetMailer marketing site
 
-```sh
-npm create astro@latest -- --template basics
-```
+Temporary static marketing site for GSheetMailer, built with Astro.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Project goals
 
-## 🚀 Project Structure
+- one lightweight landing page
+- one Privacy Policy page
+- simple HTML and CSS
+- easy GitHub Pages deployment
+- easy migration later to a more complete Next.js app
 
-Inside of your Astro project, you'll see the following folders and files:
+## Local development
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+1. Install dependencies:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+   npm install
 
-## 🧞 Commands
+2. Start the local server:
 
-All commands are run from the root of the project, from a terminal:
+   npm run dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+3. Build the production version:
 
-## 👀 Want to learn more?
+   npm run build
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+4. Preview the built site locally:
+
+   npm run preview
+
+## Update product settings
+
+Edit the shared product information in src/consts.ts.
+This is the single place to update:
+
+- product name
+- support email
+- domain
+- Chrome extension URL
+
+## GitHub Pages deployment
+
+A workflow is included in .github/workflows/deploy.yml.
+
+To deploy:
+
+1. Push the repository to GitHub.
+2. In GitHub, open Settings → Pages.
+3. Set the source to GitHub Actions.
+4. Push to the main branch to trigger deployment.
+
+## Notes for custom domains or repo paths
+
+- If you use a custom domain, keep SITE_URL set to your real domain.
+- If you deploy under a repository subpath, update BASE_PATH in the workflow or your environment.
+
+## Tech
+
+- Astro
+- static output
+- no backend
+- no extra UI dependencies
+

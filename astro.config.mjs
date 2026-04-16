@@ -1,5 +1,11 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-// https://astro.build/config
-export default defineConfig({});
+const site = process.env.SITE_URL ?? "https://gsheetmailer.com";
+const base = process.env.BASE_PATH ?? "/";
+
+export default defineConfig({
+  site,
+  base,
+  output: "static",
+});

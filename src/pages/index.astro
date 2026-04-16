@@ -1,11 +1,95 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../consts';
+import productIcon from '../assets/icon128.png';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const privacyUrl = `${import.meta.env.BASE_URL}privacy/`;
+
+const steps = [
+  {
+    title: 'Connect Google account',
+    text: 'Securely connect the Google account you already use with Gmail.',
+  },
+  {
+    title: 'Choose your Google Sheet',
+    text: 'Select the sheet that contains your recipients and personalization fields.',
+  },
+  {
+    title: 'Send personalized emails',
+    text: 'Review your message and send tailored emails without scripts or setup headaches.',
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title={`${SITE.productName} | Personalized emails from Google Sheets`}
+  description={SITE.description}
+  path="/"
+>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="brand-mark">
+          <img src={productIcon.src} alt={`${SITE.productName} icon`} width="64" height="64" />
+          <p class="eyebrow">Simple Gmail outreach from Google Sheets</p>
+        </div>
+        <h1>Send personalized emails without the technical hassle.</h1>
+        <p>
+          {SITE.productName} helps you turn a simple spreadsheet into a clean email workflow using
+          Gmail. No scripts, no confusing setup, and no extra complexity.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href={SITE.extensionUrl} target="_blank" rel="noreferrer">
+            Install the Extension
+          </a>
+          <a class="button secondary" href={privacyUrl}>Read Privacy Policy</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Product overview">
+        <h2>Why people use {SITE.productName}</h2>
+        <ul class="feature-list">
+          <li>Works with familiar Google tools</li>
+          <li>Built for non-technical users</li>
+          <li>Fast to set up and easy to trust</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="panel">
+      <h2>How it works</h2>
+      <div class="grid">
+        {steps.map((step, index) => (
+          <div class="step">
+            <strong>Step {index + 1}</strong>
+            <strong>{step.title}</strong>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Built for a clean, simple workflow</h2>
+      <div class="grid">
+        <div class="stat">
+          <strong>Clear setup</strong>
+          <p>Start quickly with a flow that feels natural and easy to follow.</p>
+        </div>
+        <div class="stat">
+          <strong>Personal outreach</strong>
+          <p>Use spreadsheet data to send more relevant emails with less manual work.</p>
+        </div>
+        <div class="stat">
+          <strong>Lightweight approach</strong>
+          <p>No backend, no bloated interface, and no unnecessary distractions.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 {SITE.productName} • <a href={privacyUrl}>Privacy Policy</a>
+  </footer>
 </Layout>
