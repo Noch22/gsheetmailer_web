@@ -1,0 +1,87 @@
+---
+import { SITE } from '../../consts';
+import { getTranslation, buildUrl, type Lang } from '../../i18n/ui';
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import productIcon from '../../assets/icon128.png';
+
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+  lang: Lang;
+};
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.lang === 'fr' && !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, lang: 'fr' },
+  }));
+}
+
+const { post, lang } = Astro.props as Props;
+const { Content } = await render(post);
+const base = import.meta.env.BASE_URL;
+const t = getTranslation(lang);
+const privacyUrl = buildUrl(base, lang, '/privacy/');
+const homeUrl = buildUrl(base, lang, '/');
+const frHomeUrl = buildUrl(base, 'fr', '/');
+const enHomeUrl = buildUrl(base, 'en', '/');
+---
+
+<Layout
+  title={`${post.data.title} | Blog GSheetMailer`}
+  description={post.data.description}
+  path={`/blog/${post.id}/`}
+  lang="fr"
+>
+
+<main class="page">
+      <header class="site-header">
+        <a class="site-brand" href={homeUrl}>
+          <img src={productIcon.src} alt="" width="40" height="40" />
+          <span>{SITE.productName}</span>
+        </a>
+      
+        <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
+          <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frHomeUrl}>FR</a>
+          <a class:list={["lang-pill", { active: lang === 'en' }]} href={enHomeUrl}>EN</a>
+        </nav>
+      </header>
+    <section class="panel">
+      <p class="eyebrow">Blog</p>
+      <h1>{post.data.title}</h1>
+      <p class="meta">Publie le {post.data.publishDate.toLocaleDateString('fr-FR')}</p>
+      <div class="actions">
+        <a class="button secondary" href={`${base}blog/`}>Retour au blog</a>
+      </div>
+    </section>
+
+    <article class="panel">
+      <Content />
+    </article>
+    <section class="hero">
+        <div class="hero-copy">
+        <p class="eyebrow">{t.hero.eyebrow}</p>
+        <h1>{t.hero.title}</h1>
+        <p>{t.hero.text}</p>
+
+        <div class="actions">
+          
+          <a class="button primary" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer">
+            {t.hero.betaCta}
+          </a>
+          <a class="button secondary" href={privacyUrl}>{t.hero.secondaryCta}</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Product overview">
+        <h2>{t.why.title}</h2>
+        <ul class="feature-list">
+            {t.why.items.map((item) => <li>{item}</li>)}
+        </ul>
+    </aside>
+</section>
+</main>
+</Layout>

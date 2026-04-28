@@ -30,6 +30,7 @@ type Translation = {
     title: string;
     text: string;
     primaryCta: string;
+    betaCta: string;
     secondaryCta: string;
   };
   why: {
@@ -41,12 +42,22 @@ type Translation = {
     stepLabel: string;
     steps: Array<{ title: string; text: string }>;
   };
+  preview: {
+    title: string;
+    text: string;
+  };
   workflow: {
     title: string;
     cards: Array<{ title: string; text: string }>;
   };
+  blog: {
+    title: string;
+    text: string;
+    cta: string;
+  };
   footer: {
     privacy: string;
+    blog: string;
   };
   privacyPage: {
     eyebrow: string;
@@ -81,6 +92,7 @@ export const translations: Record<Lang, Translation> = {
       title: "Envoyez des emails personnalisés sans complexité technique.",
       text: "GSheetMailer vous aide à transformer un simple tableur en workflow email clair, rapide et rassurant. Aucun script, aucune configuration compliquée.",
       primaryCta: "Installer l’extension",
+      betaCta: "Demander l’accès bêta",
       secondaryCta: "Lire la politique de confidentialité",
     },
     why: {
@@ -96,18 +108,22 @@ export const translations: Record<Lang, Translation> = {
       stepLabel: "Étape",
       steps: [
         {
-          title: "Connectez votre compte Google",
+          title: "Choississez votre Google Sheet",
           text: "Connectez en toute sécurité le compte Google que vous utilisez déjà avec Gmail.",
         },
         {
-          title: "Choisissez votre Google Sheet",
+          title: "Réglez vos variables",
           text: "Sélectionnez le tableur contenant vos destinataires et vos champs de personnalisation.",
         },
         {
-          title: "Envoyez vos emails personnalisés",
+          title: "Rédigez votre message et envoyez vos emails",
           text: "Relisez votre message puis envoyez vos emails sans script ni configuration complexe.",
         },
       ],
+    },
+    preview: {
+      title: "À quoi ça ressemble concrètement",
+      text: "Visualisez les 3 étapes dans l’interface de l’extension avant de commencer.",
     },
     workflow: {
       title: "Un workflow simple et léger",
@@ -126,8 +142,14 @@ export const translations: Record<Lang, Translation> = {
         },
       ],
     },
+    blog: {
+      title: "Blog SEO multilingue en préparation",
+      text: "Consultez nos guides pratiques pour utiliser l’extension facilement.",
+      cta: "Lire le blog",
+    },
     footer: {
       privacy: "Politique de confidentialité",
+      blog: "Blog",
     },
     privacyPage: {
       eyebrow: "Politique de confidentialité",
@@ -234,6 +256,7 @@ export const translations: Record<Lang, Translation> = {
       title: "Send personalized emails without the technical hassle.",
       text: "GSheetMailer helps you turn a simple spreadsheet into a clean email workflow using Gmail. No scripts, no confusing setup, and no extra complexity.",
       primaryCta: "Install the Extension",
+      betaCta: "Request Beta Access",
       secondaryCta: "Read Privacy Policy",
     },
     why: {
@@ -249,18 +272,22 @@ export const translations: Record<Lang, Translation> = {
       stepLabel: "Step",
       steps: [
         {
-          title: "Connect Google account",
+          title: "Choose your Google Sheet",
           text: "Securely connect the Google account you already use with Gmail.",
         },
         {
-          title: "Choose your Google Sheet",
+          title: "Set your variables",
           text: "Select the sheet that contains your recipients and personalization fields.",
         },
         {
-          title: "Send personalized emails",
+          title: "Review your message and send tailored emails",
           text: "Review your message and send tailored emails without scripts or setup headaches.",
         },
       ],
+    },
+    preview: {
+      title: "See the product in action",
+      text: "These screenshots show the 3 key steps inside the extension experience.",
     },
     workflow: {
       title: "Built for a clean, simple workflow",
@@ -279,8 +306,14 @@ export const translations: Record<Lang, Translation> = {
         },
       ],
     },
+    blog: {
+      title: "Multilingual SEO blog is live",
+      text: "Check our practical guides for using the extension easily.",
+      cta: "Visit the blog",
+    },
     footer: {
       privacy: "Privacy Policy",
+      blog: "Blog",
     },
     privacyPage: {
       eyebrow: "Privacy Policy",

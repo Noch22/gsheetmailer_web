@@ -1,0 +1,46 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const posts = (await getCollection('blog', ({ data }) => data.lang === 'en' && !data.draft)).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+---
+
+<Layout
+  title="GSheetMailer Blog | Google Sheets email workflow guides"
+  description="Actionable posts about personalized Gmail sending from Google Sheets."
+  path="/en/blog/"
+  lang="en"
+>
+  <main class="page">
+    <header class="site-header">
+      <a class="site-brand" href={`${base}en/`}>
+        <span>GSheetMailer</span>
+      </a>
+    </header>
+
+    <section class="panel">
+      <p class="eyebrow">Blog</p>
+      <h1>Practical guides for Google Sheets email workflows</h1>
+      <p>Simple content designed to improve your outreach process in multiple languages.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Latest posts</h2>
+      <div class="grid">
+        {posts.map((post) => (
+          <article class="stat">
+            <strong>{post.data.title}</strong>
+            <p>{post.data.description}</p>
+            <p class="meta">{post.data.publishDate.toLocaleDateString('en-US')}</p>
+            <p>
+              <a href={`${base}en/blog/${post.id}/`}>Read article</a>
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

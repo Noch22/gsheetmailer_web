@@ -269,6 +269,42 @@ const assetBase = import.meta.env.BASE_URL;
 		border: 1px solid var(--line);
 	}
 
+	.step-gallery {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 16px;
+		margin-top: 16px;
+	}
+
+	.step-shot {
+		margin: 0;
+		background: var(--surface-soft);
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		overflow: hidden;
+	}
+
+	.step-shot img {
+		display: block;
+		width: 100%;
+		height: 200px;
+		object-fit: contain;
+		background: #eef2f7;
+	}
+
+	.step-shot-copy {
+		padding: 14px;
+	}
+
+	.step-shot-copy strong {
+		display: block;
+		margin-bottom: 4px;
+	}
+
+	.step-shot-copy p {
+		margin: 0;
+	}
+
 	.step strong,
 		.stat strong {
 		display: block;
@@ -281,6 +317,10 @@ const assetBase = import.meta.env.BASE_URL;
 		border-radius: 16px;
 		background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
 		border: 1px solid var(--line);
+	}
+
+	.blog-teaser p {
+		max-width: 70ch;
 	}
 
 	.policy-card h2 {
@@ -303,7 +343,8 @@ const assetBase = import.meta.env.BASE_URL;
 
 	@media (max-width: 820px) {
 		.hero,
-		.grid {
+		.grid,
+		.step-gallery {
 			grid-template-columns: 1fr;
 		}
 
