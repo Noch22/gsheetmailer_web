@@ -6,6 +6,8 @@ const base = import.meta.env.BASE_URL;
 const posts = (await getCollection('blog', ({ data }) => data.lang === 'fr' && !data.draft)).sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 );
+const frBlogUrl = `${base}blog/`;
+const enBlogUrl = `${base}en/blog/`;
 ---
 
 <Layout
@@ -13,31 +15,46 @@ const posts = (await getCollection('blog', ({ data }) => data.lang === 'fr' && !
   description="Articles pratiques sur l'envoi d'emails personnalisés depuis Google Sheets avec Gmail."
   path="/blog/"
   lang="fr"
+  keywords={[
+    'google sheets email',
+    'mail merge gmail',
+    'envoyer email personnalise',
+    'prospection email google sheets',
+  ]}
 >
-  <main class="page">
-    <header class="site-header">
-      <a class="site-brand" href={`${base}`}>
+  <header class="site-header site-header-sticky">
+    <div class="container header-inner">
+      <a class="site-brand" href={base}>
         <span>GSheetMailer</span>
       </a>
-    </header>
+      <div class="header-actions">
+        <a class="lang-pill active" href={frBlogUrl} data-umami-event="language_switch_blog_index" data-umami-event-lang="fr">FR</a>
+        <a class="lang-pill" href={enBlogUrl} data-umami-event="language_switch_blog_index" data-umami-event-lang="en">EN</a>
+      </div>
+    </div>
+  </header>
 
-    <section class="panel">
+  <main class="blog-page container">
+    <section class="blog-hero">
       <p class="eyebrow">Blog</p>
-      <h1>Guides pratiques pour mieux envoyer vos emails</h1>
-      <p>Des contenus simples pour améliorer vos envois depuis Google Sheets, en français et en anglais.</p>
+      <h1>Guides pratiques pour envoyer mieux avec Google Sheets</h1>
+      <p>Retours terrain, méthodes concrètes et astuces actionnables pour obtenir plus de réponses sans complexifier votre workflow.</p>
     </section>
 
-    <section class="panel">
+    <section class="blog-list-wrap">
       <h2>Derniers articles</h2>
-      <div class="grid">
+      <div class="blog-grid">
         {posts.map((post) => (
-          <article class="stat">
-            <strong>{post.data.title}</strong>
-            <p>{post.data.description}</p>
+          <article class="blog-card">
             <p class="meta">{post.data.publishDate.toLocaleDateString('fr-FR')}</p>
-            <p>
-              <a href={`${base}blog/${post.id}/`}>Lire l'article</a>
-            </p>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            {post.data.keywords.length > 0 && (
+              <ul class="blog-tags">
+                {post.data.keywords.slice(0, 3).map((keyword) => <li>{keyword}</li>)}
+              </ul>
+            )}
+            <a class="blog-read-link" href={`${base}blog/${post.id}/`} data-umami-event="blog_article_click" data-umami-event-lang="fr" data-umami-event-post={post.id}>Lire l'article</a>
           </article>
         ))}
       </div>

@@ -26,8 +26,8 @@ const pagePath = lang === 'fr' ? '/privacy/' : '/en/privacy/';
       </a>
 
       <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
-        <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frPrivacyUrl}>FR</a>
-        <a class:list={["lang-pill", { active: lang === 'en' }]} href={enPrivacyUrl}>EN</a>
+        <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frPrivacyUrl} data-umami-event="language_switch_privacy" data-umami-event-lang="fr">FR</a>
+        <a class:list={["lang-pill", { active: lang === 'en' }]} href={enPrivacyUrl} data-umami-event="language_switch_privacy" data-umami-event-lang="en">EN</a>
       </nav>
     </header>
 
@@ -37,7 +37,7 @@ const pagePath = lang === 'fr' ? '/privacy/' : '/en/privacy/';
       <p class="intro">{t.privacyPage.intro}</p>
       <p class="meta">{t.privacyPage.updated}</p>
       <div class="actions">
-        <a class="button secondary" href={homeUrl}>{t.nav.backHome}</a>
+        <a class="button secondary" href={homeUrl} data-umami-event="privacy_back_home" data-umami-event-lang={lang}>{t.nav.backHome}</a>
       </div>
     </section>
 
@@ -58,11 +58,11 @@ const pagePath = lang === 'fr' ? '/privacy/' : '/en/privacy/';
       <p>{t.privacyPage.contactLead}</p>
       <ul>
         <li>
-          {t.privacyPage.supportLabel}: <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
+          {t.privacyPage.supportLabel}: <a href={`mailto:${SITE.supportEmail}`} data-umami-event="privacy_support_email_click" data-umami-event-lang={lang}>{SITE.supportEmail}</a>
         </li>
         <li>
           {t.privacyPage.websiteLabel}:{' '}
-          <a href={`https://${SITE.domain}`} target="_blank" rel="noreferrer">{SITE.domain}</a>
+          <a href={`https://${SITE.domain}`} target="_blank" rel="noreferrer" data-umami-event="privacy_website_click" data-umami-event-lang={lang}>{SITE.domain}</a>
         </li>
       </ul>
     </section>

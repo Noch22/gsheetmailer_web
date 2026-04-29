@@ -26,8 +26,29 @@ const base = import.meta.env.BASE_URL;
 const t = getTranslation(lang);
 const privacyUrl = buildUrl(base, lang, '/privacy/');
 const homeUrl = buildUrl(base, lang, '/');
-const frHomeUrl = buildUrl(base, 'fr', '/');
-const enHomeUrl = buildUrl(base, 'en', '/');
+const frBlogUrl = buildUrl(base, 'fr', '/blog/');
+const enBlogUrl = buildUrl(base, 'en', '/blog/');
+const baseUrl = Astro.site ?? new URL('https://gsheetmailer.com');
+const articleUrl = new URL(`/en/blog/${post.id}/`, baseUrl).toString();
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: 'en',
+  datePublished: post.data.publishDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
+  mainEntityOfPage: articleUrl,
+  author: {
+    '@type': 'Organization',
+    name: SITE.productName,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.productName,
+  },
+  keywords: post.data.keywords,
+};
 ---
 
 <Layout
@@ -35,52 +56,45 @@ const enHomeUrl = buildUrl(base, 'en', '/');
   description={post.data.description}
   path={`/en/blog/${post.id}/`}
   lang="en"
+  keywords={post.data.keywords}
+  ogType="article"
+  publishedTime={post.data.publishDate.toISOString()}
+  modifiedTime={(post.data.updatedDate ?? post.data.publishDate).toISOString()}
 >
-  <main class="page">
-    <header class="site-header">
-        <a class="site-brand" href={homeUrl}>
-          <img src={productIcon.src} alt="" width="40" height="40" />
-          <span>{SITE.productName}</span>
-        </a>
-      
-        <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
-          <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frHomeUrl}>FR</a>
-          <a class:list={["lang-pill", { active: lang === 'en' }]} href={enHomeUrl}>EN</a>
-        </nav>
-      </header>
-    <section class="panel">
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)}></script>
+  <header class="site-header site-header-sticky">
+    <div class="container header-inner">
+      <a class="site-brand" href={homeUrl}>
+        <img src={productIcon.src} alt="" width="40" height="40" />
+        <span>{SITE.productName}</span>
+      </a>
+      <nav class="lang-switch" aria-label={t.nav.langSwitcherLabel}>
+        <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frBlogUrl} data-umami-event="language_switch_blog_article" data-umami-event-lang="fr" data-umami-event-post={post.id}>FR</a>
+        <a class:list={["lang-pill", { active: lang === 'en' }]} href={enBlogUrl} data-umami-event="language_switch_blog_article" data-umami-event-lang="en" data-umami-event-post={post.id}>EN</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="blog-page container">
+    <section class="blog-post-hero">
       <p class="eyebrow">Blog</p>
       <h1>{post.data.title}</h1>
       <p class="meta">Published on {post.data.publishDate.toLocaleDateString('en-US')}</p>
-      <div class="actions">
-        <a class="button secondary" href={`${base}en/blog/`}>Back to blog</a>
-      </div>
+      <a class="button secondary" href={`${base}en/blog/`} data-umami-event="blog_back_to_index" data-umami-event-lang="en" data-umami-event-post={post.id}>Back to blog</a>
     </section>
 
-    <article class="panel">
+    <article class="article-content">
       <Content />
     </article>
-    <section class="hero">
-        <div class="hero-copy">
-        <p class="eyebrow">{t.hero.eyebrow}</p>
-        <h1>{t.hero.title}</h1>
-        <p>{t.hero.text}</p>
 
-        <div class="actions">
-          
-          <a class="button primary" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer">
-            {t.hero.betaCta}
-          </a>
-          <a class="button secondary" href={privacyUrl}>{t.hero.secondaryCta}</a>
-        </div>
+    <section class="post-cta">
+      <h2>{t.hero.title}</h2>
+      <p>{t.hero.text}</p>
+      <div class="actions center">
+        <a class="button primary" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_article" data-umami-event-lang="en" data-umami-event-post={post.id}>{t.hero.primaryCta}</a>
+        <a class="button secondary" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_article" data-umami-event-lang="en" data-umami-event-post={post.id}>{t.hero.betaCta}</a>
+        <a class="button ghost" href={privacyUrl} data-umami-event="privacy_click_article" data-umami-event-lang="en" data-umami-event-post={post.id}>{t.hero.secondaryCta}</a>
       </div>
-
-      <aside class="hero-card" aria-label="Product overview">
-        <h2>{t.why.title}</h2>
-        <ul class="feature-list">
-            {t.why.items.map((item) => <li>{item}</li>)}
-        </ul>
-    </aside>
-</section>
+    </section>
   </main>
 </Layout>
