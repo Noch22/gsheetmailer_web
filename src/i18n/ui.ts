@@ -21,6 +21,7 @@ type Translation = {
     privacyDescription: string;
   };
   nav: {
+    sectionsLabel: string;
     langSwitcherLabel: string;
     backHome: string;
     privacy: string;
@@ -32,6 +33,7 @@ type Translation = {
     primaryCta: string;
     betaCta: string;
     secondaryCta: string;
+    proof: string;
   };
   why: {
     title: string;
@@ -39,6 +41,7 @@ type Translation = {
   };
   how: {
     title: string;
+    subtitle: string;
     stepLabel: string;
     steps: Array<{ title: string; text: string }>;
   };
@@ -46,9 +49,37 @@ type Translation = {
     title: string;
     text: string;
   };
+  video: {
+    kicker: string;
+    title: string;
+    text: string;
+    iframeTitle: string;
+    fallback: string;
+    cta: string;
+  };
   workflow: {
     title: string;
     cards: Array<{ title: string; text: string }>;
+  };
+  benefits: {
+    kicker: string;
+    title: string;
+    itemText: string;
+  };
+  trust: {
+    kicker: string;
+    title: string;
+    text: string;
+    items: Array<{ title: string; text: string }>;
+  };
+  faq: {
+    kicker: string;
+    title: string;
+    items: Array<{ q: string; a: string }>;
+  };
+  finalCta: {
+    title: string;
+    text: string;
   };
   blog: {
     title: string;
@@ -83,6 +114,7 @@ export const translations: Record<Lang, Translation> = {
       privacyDescription: "Politique de confidentialité de GSheetMailer.",
     },
     nav: {
+      sectionsLabel: "Sections",
       langSwitcherLabel: "Choisir la langue",
       backHome: "Retour à l’accueil",
       privacy: "Politique de confidentialité",
@@ -94,6 +126,8 @@ export const translations: Record<Lang, Translation> = {
       primaryCta: "Installer l’extension",
       betaCta: "Demander l’accès bêta",
       secondaryCta: "Lire la politique de confidentialité",
+      proof:
+        "Installation en 30 secondes • Sans script • Compatible Gmail et Google Workspace",
     },
     why: {
       title: "Pourquoi choisir GSheetMailer",
@@ -105,6 +139,7 @@ export const translations: Record<Lang, Translation> = {
     },
     how: {
       title: "Comment ça marche",
+      subtitle: "Trois étapes. Zéro friction.",
       stepLabel: "Étape",
       steps: [
         {
@@ -125,6 +160,15 @@ export const translations: Record<Lang, Translation> = {
       title: "À quoi ça ressemble concrètement",
       text: "Visualisez les 3 étapes dans l’interface de l’extension avant de commencer.",
     },
+    video: {
+      kicker: "Démo rapide",
+      title: "Regardez GSheetMailer en action",
+      text: "Une vidéo courte pour comprendre le workflow complet avant de commencer.",
+      iframeTitle: "Vidéo explicative GSheetMailer",
+      fallback:
+        "Ajoutez un lien YouTube valide dans le composant pour afficher la vidéo.",
+      cta: "Voir sur YouTube",
+    },
     workflow: {
       title: "Un workflow simple et léger",
       cards: [
@@ -141,6 +185,61 @@ export const translations: Record<Lang, Translation> = {
           text: "Pas de backend, pas d’interface lourde, pas de distraction inutile.",
         },
       ],
+    },
+    benefits: {
+      kicker: "Bénéfices",
+      title: "Une interface conçue pour vendre sans complexifier",
+      itemText:
+        "Pensé pour réduire les frictions entre votre feuille et vos envois Gmail.",
+    },
+    trust: {
+      kicker: "Confiance",
+      title: "Vos données, vos règles.",
+      text: "Le produit reste aligné avec un workflow Google simple, lisible, et rassurant.",
+      items: [
+        {
+          title: "OAuth Google officiel",
+          text: "Authentification sécurisée via Google avec un contrôle clair des permissions.",
+        },
+        {
+          title: "Aucun serveur intermédiaire",
+          text: "Vos contacts et vos messages restent dans votre environnement Google.",
+        },
+        {
+          title: "Conforme RGPD",
+          text: "Approche privacy-first pensée pour les équipes européennes.",
+        },
+        {
+          title: "Politique transparente",
+          text: "Documentation claire, sans promesse floue ni jargon inutile.",
+        },
+      ],
+    },
+    faq: {
+      kicker: "FAQ",
+      title: "Les questions avant d’installer",
+      items: [
+        {
+          q: "Combien d'emails puis-je envoyer par jour ?",
+          a: "Vous restez sur les limites Gmail standard (500/jour en compte gratuit, plus avec Google Workspace).",
+        },
+        {
+          q: "Faut-il savoir coder ?",
+          a: "Non. L'objectif est précisément de supprimer le besoin de scripts.",
+        },
+        {
+          q: "Mes contacts sont-ils stockés sur vos serveurs ?",
+          a: "Non, l'envoi et la personnalisation sont pensés pour rester dans votre flux Google.",
+        },
+        {
+          q: "Puis-je personnaliser plus que le prénom ?",
+          a: "Oui, chaque colonne de votre feuille peut être utilisée comme variable dans le message.",
+        },
+      ],
+    },
+    finalCta: {
+      title: "Prêt à envoyer votre première campagne en moins de 5 minutes ?",
+      text: "Installation rapide, prise en main immédiate, et un workflow qui reste lisible même pour une petite équipe.",
     },
     blog: {
       title: "Blog SEO multilingue en préparation",
@@ -247,6 +346,7 @@ export const translations: Record<Lang, Translation> = {
       privacyDescription: "Privacy Policy for GSheetMailer.",
     },
     nav: {
+      sectionsLabel: "Sections",
       langSwitcherLabel: "Choose language",
       backHome: "Back to Home",
       privacy: "Privacy Policy",
@@ -258,6 +358,8 @@ export const translations: Record<Lang, Translation> = {
       primaryCta: "Install the Extension",
       betaCta: "Request Beta Access",
       secondaryCta: "Read Privacy Policy",
+      proof:
+        "30-second install • No scripts • Works with Gmail and Google Workspace",
     },
     why: {
       title: "Why people use GSheetMailer",
@@ -269,6 +371,7 @@ export const translations: Record<Lang, Translation> = {
     },
     how: {
       title: "How it works",
+      subtitle: "Three steps. Zero friction.",
       stepLabel: "Step",
       steps: [
         {
@@ -289,6 +392,15 @@ export const translations: Record<Lang, Translation> = {
       title: "See the product in action",
       text: "These screenshots show the 3 key steps inside the extension experience.",
     },
+    video: {
+      kicker: "Quick demo",
+      title: "See GSheetMailer in action",
+      text: "A short walkthrough to understand the full workflow before you start.",
+      iframeTitle: "GSheetMailer explainer video",
+      fallback:
+        "Add a valid YouTube link in the component to display the video.",
+      cta: "Watch on YouTube",
+    },
     workflow: {
       title: "Built for a clean, simple workflow",
       cards: [
@@ -305,6 +417,61 @@ export const translations: Record<Lang, Translation> = {
           text: "No backend, no bloated interface, and no unnecessary distractions.",
         },
       ],
+    },
+    benefits: {
+      kicker: "Benefits",
+      title: "An interface built to sell without adding complexity",
+      itemText:
+        "Designed to reduce friction between your sheet and Gmail sending.",
+    },
+    trust: {
+      kicker: "Trust",
+      title: "Your data, your rules.",
+      text: "The product stays aligned with a simple, transparent, and reassuring Google workflow.",
+      items: [
+        {
+          title: "Official Google OAuth",
+          text: "Secure Google authentication with clear permission control.",
+        },
+        {
+          title: "No intermediary server",
+          text: "Your contacts and messages stay inside your Google environment.",
+        },
+        {
+          title: "GDPR-friendly",
+          text: "Privacy-first approach designed for modern teams.",
+        },
+        {
+          title: "Transparent policy",
+          text: "Clear documentation with no vague promises and no confusing jargon.",
+        },
+      ],
+    },
+    faq: {
+      kicker: "FAQ",
+      title: "Questions before you install",
+      items: [
+        {
+          q: "How many emails can I send per day?",
+          a: "You stay within standard Gmail limits (500/day on free Gmail, more on Google Workspace).",
+        },
+        {
+          q: "Do I need coding skills?",
+          a: "No. The goal is exactly to remove the need for scripts.",
+        },
+        {
+          q: "Are my contacts stored on your servers?",
+          a: "No. Sending and personalization are designed to stay in your Google workflow.",
+        },
+        {
+          q: "Can I personalize more than first name?",
+          a: "Yes, every column in your sheet can be used as a dynamic variable in your message.",
+        },
+      ],
+    },
+    finalCta: {
+      title: "Ready to send your first campaign in under 5 minutes?",
+      text: "Fast setup, immediate onboarding, and a workflow that stays clear even for a small team.",
     },
     blog: {
       title: "Multilingual SEO blog is live",

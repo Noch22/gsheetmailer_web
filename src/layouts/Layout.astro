@@ -407,6 +407,66 @@ const organizationJsonLd = {
 		padding: 22px 24px 78px;
 	}
 
+	.video-showcase {
+		padding-bottom: 16px;
+	}
+
+	.video-card {
+		background: linear-gradient(145deg, #fffdf8 0%, #f7f1e5 100%);
+		border: 1px solid var(--line);
+		border-radius: 26px;
+		padding: 28px;
+		box-shadow: var(--shadow);
+	}
+
+	.video-copy {
+		text-align: center;
+		max-width: 740px;
+		margin: 0 auto 18px;
+	}
+
+	.video-copy p {
+		margin: 0;
+	}
+
+	.video-shell {
+		position: relative;
+		width: min(100%, 940px);
+		margin: 0 auto;
+		aspect-ratio: 16 / 9;
+		border-radius: 18px;
+		overflow: hidden;
+		background: #0f1727;
+		border: 1px solid rgba(23, 32, 51, 0.26);
+		box-shadow: 0 24px 55px rgba(15, 23, 39, 0.28);
+	}
+
+	.video-shell iframe,
+	.video-fallback {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.video-shell iframe {
+		border: 0;
+		display: block;
+	}
+
+	.video-fallback {
+		display: grid;
+		place-items: center;
+		padding: 20px;
+		text-align: center;
+	}
+
+	.video-fallback p {
+		color: rgba(255, 255, 255, 0.88);
+		font-weight: 600;
+		max-width: 56ch;
+	}
+
 	.preview-copy {
 		text-align: center;
 		max-width: 760px;
@@ -837,6 +897,11 @@ const organizationJsonLd = {
 
 		.final-cta {
 			padding: 36px 18px;
+			border-radius: 22px;
+		}
+
+		.video-card {
+			padding: 20px;
 			border-radius: 22px;
 		}
 

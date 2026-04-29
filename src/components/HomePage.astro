@@ -21,91 +21,13 @@ const frHomeUrl = buildUrl(base, 'fr', '/');
 const enHomeUrl = buildUrl(base, 'en', '/');
 const pagePath = lang === 'fr' ? '/' : '/en/';
 const stepImages = [step1Image, step2Image, step3Image];
-const isFr = lang === 'fr';
 
-const trustItems = isFr
-  ? [
-      {
-        title: 'OAuth Google officiel',
-        text: 'Authentification sécurisée via Google avec un contrôle clair des permissions.',
-      },
-      {
-        title: 'Aucun serveur intermédiaire',
-        text: 'Vos contacts et vos messages restent dans votre environnement Google.',
-      },
-      {
-        title: 'Conforme RGPD',
-        text: 'Approche privacy-first pensée pour les équipes européennes.',
-      },
-      {
-        title: 'Politique transparente',
-        text: 'Documentation claire, sans promesse floue ni jargon inutile.',
-      },
-    ]
-  : [
-      {
-        title: 'Official Google OAuth',
-        text: 'Secure Google authentication with clear permission control.',
-      },
-      {
-        title: 'No intermediary server',
-        text: 'Your contacts and messages stay inside your Google environment.',
-      },
-      {
-        title: 'GDPR-friendly',
-        text: 'Privacy-first approach designed for modern teams.',
-      },
-      {
-        title: 'Transparent policy',
-        text: 'Clear documentation with no vague promises and no confusing jargon.',
-      },
-    ];
-
-const faqItems = isFr
-  ? [
-      {
-        q: 'Combien d\'emails puis-je envoyer par jour ?',
-        a: 'Vous restez sur les limites Gmail standard (500/jour en compte gratuit, plus avec Google Workspace).',
-      },
-      {
-        q: 'Faut-il savoir coder ?',
-        a: 'Non. L\'objectif est précisément de supprimer le besoin de scripts.',
-      },
-      {
-        q: 'Mes contacts sont-ils stockés sur vos serveurs ?',
-        a: 'Non, l\'envoi et la personnalisation sont pensés pour rester dans votre flux Google.',
-      },
-      {
-        q: 'Puis-je personnaliser plus que le prénom ?',
-        a: 'Oui, chaque colonne de votre feuille peut être utilisée comme variable dans le message.',
-      },
-    ]
-  : [
-      {
-        q: 'How many emails can I send per day?',
-        a: 'You stay within standard Gmail limits (500/day on free Gmail, more on Google Workspace).',
-      },
-      {
-        q: 'Do I need coding skills?',
-        a: 'No. The goal is exactly to remove the need for scripts.',
-      },
-      {
-        q: 'Are my contacts stored on your servers?',
-        a: 'No. Sending and personalization are designed to stay in your Google workflow.',
-      },
-      {
-        q: 'Can I personalize more than first name?',
-        a: 'Yes, every column in your sheet can be used as a dynamic variable in your message.',
-      },
-    ];
-
-const finalCtaTitle = isFr
-  ? 'Prêt à envoyer votre première campagne en moins de 5 minutes ?'
-  : 'Ready to send your first campaign in under 5 minutes?';
-
-const finalCtaText = isFr
-  ? 'Installation rapide, prise en main immédiate, et un workflow qui reste lisible même pour une petite équipe.'
-  : 'Fast setup, immediate onboarding, and a workflow that stays clear even for a small team.';
+// Replace this link with your own YouTube video URL.
+const youtubeVideoUrl = 'https://youtu.be/EYNpylyoDu8';
+const youtubeVideoId = youtubeVideoUrl.match(/(?:v=|be\/|embed\/)([A-Za-z0-9_-]{11})/)?.[1] ?? '';
+const youtubeEmbedUrl = youtubeVideoId
+  ? `https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`
+  : '';
 ---
 
 <Layout title={t.meta.homeTitle} description={t.meta.homeDescription} path={pagePath} lang={lang}>
@@ -116,11 +38,11 @@ const finalCtaText = isFr
         <span>{SITE.productName}</span>
       </a>
 
-      <nav class="section-nav" aria-label="Sections">
+      <nav class="section-nav" aria-label={t.nav.sectionsLabel}>
         <a href="#how">{t.how.title}</a>
-        <a href="#benefits">{isFr ? 'Bénéfices' : 'Benefits'}</a>
-        <a href="#trust">{isFr ? 'Confiance' : 'Trust'}</a>
-        <a href="#faq">FAQ</a>
+        <a href="#benefits">{t.benefits.kicker}</a>
+        <a href="#trust">{t.trust.kicker}</a>
+        <a href="#faq">{t.faq.kicker}</a>
       </nav>
 
       <div class="header-actions">
@@ -149,7 +71,36 @@ const finalCtaText = isFr
           <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_hero" data-umami-event-lang={lang}>{t.hero.primaryCta}</a>
           <a class="button secondary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_hero" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
         </div>
-        <p class="hero-proof">{isFr ? 'Installation en 30 secondes • Sans script • Compatible Gmail et Google Workspace' : '30-second install • No scripts • Works with Gmail and Google Workspace'}</p>
+        <p class="hero-proof">{t.hero.proof}</p>
+      </div>
+    </section>
+
+    <section class="section video-showcase">
+      <div class="container">
+        <div class="video-card">
+          <div class="video-copy">
+            <p class="section-kicker">{t.video.kicker}</p>
+            <h2>{t.video.title}</h2>
+            <p>{t.video.text}</p>
+          </div>
+          <div class="video-shell">
+            {youtubeEmbedUrl ? (
+              <iframe
+                src={youtubeEmbedUrl}
+                title={t.video.iframeTitle}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            ) : (
+              <div class="video-fallback">
+                <p>{t.video.fallback}</p>
+              </div>
+            )}
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -180,7 +131,7 @@ const finalCtaText = isFr
     <section id="how" class="section section-soft">
       <div class="container">
         <p class="section-kicker">{t.how.title}</p>
-        <h2>{isFr ? 'Trois étapes. Zéro friction.' : 'Three steps. Zero friction.'}</h2>
+        <h2>{t.how.subtitle}</h2>
         <div class="how-grid">
           {t.how.steps.map((step, index) => (
             <article class="how-card">
@@ -195,8 +146,8 @@ const finalCtaText = isFr
 
     <section id="benefits" class="section">
       <div class="container">
-        <p class="section-kicker">{isFr ? 'Bénéfices' : 'Benefits'}</p>
-        <h2>{isFr ? 'Une interface conçue pour vendre sans complexifier' : 'An interface built to sell without adding complexity'}</h2>
+        <p class="section-kicker">{t.benefits.kicker}</p>
+        <h2>{t.benefits.title}</h2>
         <div class="benefit-grid">
           {t.workflow.cards.map((card) => (
             <article class="benefit-card">
@@ -207,7 +158,7 @@ const finalCtaText = isFr
           {t.why.items.map((item) => (
             <article class="benefit-card">
               <h3>{item}</h3>
-              <p>{isFr ? 'Pensé pour réduire les frictions entre votre feuille et vos envois Gmail.' : 'Designed to reduce friction between your sheet and Gmail sending.'}</p>
+              <p>{t.benefits.itemText}</p>
             </article>
           ))}
         </div>
@@ -217,13 +168,13 @@ const finalCtaText = isFr
     <section id="trust" class="section section-dark">
       <div class="container trust-grid">
         <div>
-          <p class="section-kicker">{isFr ? 'Confiance' : 'Trust'}</p>
-          <h2>{isFr ? 'Vos données, vos règles.' : 'Your data, your rules.'}</h2>
-          <p>{isFr ? 'Le produit reste aligné avec un workflow Google simple, lisible, et rassurant.' : 'The product stays aligned with a simple, transparent, and reassuring Google workflow.'}</p>
+          <p class="section-kicker">{t.trust.kicker}</p>
+          <h2>{t.trust.title}</h2>
+          <p>{t.trust.text}</p>
           <a class="button secondary inverse" href={privacyUrl} data-umami-event="privacy_click_trust" data-umami-event-lang={lang}>{t.hero.secondaryCta}</a>
         </div>
         <div class="trust-items">
-          {trustItems.map((item) => (
+          {t.trust.items.map((item) => (
             <article class="trust-item">
               <h3>{item.title}</h3>
               <p>{item.text}</p>
@@ -235,10 +186,10 @@ const finalCtaText = isFr
 
     <section id="faq" class="section">
       <div class="container faq-wrap">
-        <p class="section-kicker">FAQ</p>
-        <h2>{isFr ? 'Les questions avant d’installer' : 'Questions before you install'}</h2>
+        <p class="section-kicker">{t.faq.kicker}</p>
+        <h2>{t.faq.title}</h2>
         <div class="faq-list">
-          {faqItems.map((item) => (
+          {t.faq.items.map((item) => (
             <details class="faq-item">
               <summary>{item.q}</summary>
               <p>{item.a}</p>
@@ -250,8 +201,8 @@ const finalCtaText = isFr
 
     <section id="beta-form" class="section">
       <div class="container final-cta">
-        <h2>{finalCtaTitle}</h2>
-        <p>{finalCtaText}</p>
+        <h2>{t.finalCta.title}</h2>
+        <p>{t.finalCta.text}</p>
         <div class="actions center">
           <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_final" data-umami-event-lang={lang}>{t.hero.primaryCta}</a>
           <a class="button secondary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_final" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
