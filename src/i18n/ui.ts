@@ -89,6 +89,7 @@ type Translation = {
   footer: {
     privacy: string;
     blog: string;
+    feedback: string;
   };
   privacyPage: {
     eyebrow: string;
@@ -249,6 +250,7 @@ export const translations: Record<Lang, Translation> = {
     footer: {
       privacy: "Politique de confidentialité",
       blog: "Blog",
+      feedback: "Donner mon avis",
     },
     privacyPage: {
       eyebrow: "Politique de confidentialité",
@@ -481,6 +483,7 @@ export const translations: Record<Lang, Translation> = {
     footer: {
       privacy: "Privacy Policy",
       blog: "Blog",
+      feedback: "Feedback",
     },
     privacyPage: {
       eyebrow: "Privacy Policy",
