@@ -1,0 +1,77 @@
+media: public
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, lang, publishDate, updatedDate, draft]
+      primary: title
+      sort: [publishDate, updatedDate, title]
+      search: [title, description, keywords]
+      default:
+        sort: publishDate
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+        options:
+          maxlength: 120
+
+      - name: description
+        label: Description
+        type: text
+        required: true
+        options:
+          maxlength: 220
+
+      - name: lang
+        label: Language
+        type: select
+        required: true
+        options:
+          values:
+            - name: fr
+              label: Francais
+            - name: en
+              label: English
+
+      - name: publishDate
+        label: Publish Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: updatedDate
+        label: Updated Date
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+
+      - name: draft
+        label: Draft
+        type: boolean
+        default: false
+
+      - name: keywords
+        label: Keywords
+        type: string
+        list: true
+        description: One keyword per item.
+
+      - name: body
+        label: Content
+        type: rich-text
+        required: true
+        options:
+          format: markdown
