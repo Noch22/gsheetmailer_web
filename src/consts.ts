@@ -4,7 +4,7 @@ export const SITE = {
   supportEmail: "support@gsheetmailer.com",
   extensionUrl: "https://chromewebstore.google.com/",
   betaAccessUrl:
-    "mailto:noahbuisson22.nb@gmail.com?subject=GSheetMailer%20Beta%20Access",
+    "https://cloud-twine-274.notion.site/3521e976fab880e3b49ffa68e41ad96a?pvs=105",
   description:
     "Send personalized emails from Google Sheets with Gmail without scripts or technical complexity.",
 };

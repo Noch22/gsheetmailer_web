@@ -242,8 +242,8 @@ export const translations: Record<Lang, Translation> = {
       text: "Installation rapide, prise en main immédiate, et un workflow qui reste lisible même pour une petite équipe.",
     },
     blog: {
-      title: "Blog SEO multilingue en préparation",
-      text: "Consultez nos guides pratiques pour utiliser l’extension facilement.",
+      title: "Découvrez nos articles de blog",
+      text: "Consultez nos guides d'usages pour utiliser l'extension facilement.",
       cta: "Lire le blog",
     },
     footer: {
@@ -474,7 +474,7 @@ export const translations: Record<Lang, Translation> = {
       text: "Fast setup, immediate onboarding, and a workflow that stays clear even for a small team.",
     },
     blog: {
-      title: "Multilingual SEO blog is live",
+      title: "Discover our blog articles",
       text: "Check our practical guides for using the extension easily.",
       cta: "Visit the blog",
     },

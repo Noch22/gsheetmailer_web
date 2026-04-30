@@ -50,12 +50,12 @@ const youtubeEmbedUrl = youtubeVideoId
           <a class:list={["lang-pill", { active: lang === 'fr' }]} href={frHomeUrl}>FR</a>
           <a class:list={["lang-pill", { active: lang === 'en' }]} href={enHomeUrl}>EN</a>
         </nav>
-        <a class="button ghost" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_header" data-umami-event-lang={lang}>
+        <a class="button primary" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_header" data-umami-event-lang={lang}>
           {t.hero.betaCta}
         </a>
-        <a class="button primary" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_header" data-umami-event-lang={lang}>
+        <!-- <a class="button primary" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_header" data-umami-event-lang={lang}>
           {t.hero.primaryCta}
-        </a>
+        </a> -->
       </div>
     </div>
   </header>
@@ -68,8 +68,8 @@ const youtubeEmbedUrl = youtubeVideoId
         <h1>{t.hero.title}</h1>
         <p class="hero-lead">{t.hero.text}</p>
         <div class="actions center">
-          <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_hero" data-umami-event-lang={lang}>{t.hero.primaryCta}</a>
-          <a class="button secondary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_hero" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
+          <!-- <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_hero" data-umami-event-lang={lang}>{t.hero.primaryCta}</a> -->
+          <a class="button primary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_hero" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
         </div>
         <p class="hero-proof">{t.hero.proof}</p>
       </div>
@@ -204,8 +204,8 @@ const youtubeEmbedUrl = youtubeVideoId
         <h2>{t.finalCta.title}</h2>
         <p>{t.finalCta.text}</p>
         <div class="actions center">
-          <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_final" data-umami-event-lang={lang}>{t.hero.primaryCta}</a>
-          <a class="button secondary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_final" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
+          <!-- <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_final" data-umami-event-lang={lang}>{t.hero.primaryCta}</a> -->
+          <a class="button primary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_final" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
         </div>
       </div>
     </section>
