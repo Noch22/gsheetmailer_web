@@ -91,6 +91,20 @@ type Translation = {
     blog: string;
     feedback: string;
   };
+  homeUi: {
+    reviewsNav: string;
+    highlightsAriaLabel: string;
+    heroChips: string[];
+    heroPreviewTitle: string;
+    heroPreviewText: string;
+    floatingNotes: [string, string];
+    partnerStripLabel: string;
+    logoRowAriaLabel: string;
+    logoRow: string[];
+    reviewsKicker: string;
+    reviewsTitle: string;
+    testimonials: Array<{ quote: string; author: string }>;
+  };
   privacyPage: {
     eyebrow: string;
     title: string;
@@ -122,8 +136,8 @@ export const translations: Record<Lang, Translation> = {
     },
     hero: {
       eyebrow: "Emails Gmail simples depuis Google Sheets",
-      title: "Envoyez des emails personnalisés sans complexité technique.",
-      text: "GSheetMailer vous aide à transformer un simple tableur en workflow email clair, rapide et rassurant. Aucun script, aucune configuration compliquée.",
+      title: "Envoyez des emails personnalises sans friction.",
+      text: "Passez de votre Google Sheet a Gmail en quelques clics. Sans script et sans setup complexe.",
       primaryCta: "Installer l’extension",
       betaCta: "Demander l’accès bêta",
       secondaryCta: "Lire la politique de confidentialité",
@@ -158,13 +172,13 @@ export const translations: Record<Lang, Translation> = {
       ],
     },
     preview: {
-      title: "À quoi ça ressemble concrètement",
-      text: "Visualisez les 3 étapes dans l’interface de l’extension avant de commencer.",
+      title: "Le produit en 3 ecrans",
+      text: "Une vue rapide des etapes essentielles dans l extension.",
     },
     video: {
       kicker: "Démo rapide",
       title: "Regardez GSheetMailer en action",
-      text: "Une vidéo courte pour comprendre le workflow complet avant de commencer.",
+      text: "Une video courte pour comprendre le workflow avant de commencer.",
       iframeTitle: "Vidéo explicative GSheetMailer",
       fallback:
         "Ajoutez un lien YouTube valide dans le composant pour afficher la vidéo.",
@@ -175,28 +189,27 @@ export const translations: Record<Lang, Translation> = {
       cards: [
         {
           title: "Mise en route rapide",
-          text: "Commencez rapidement avec une expérience claire et rassurante.",
+          text: "Demarrez vite avec un parcours clair.",
         },
         {
           title: "Personnalisation facile",
-          text: "Utilisez vos données de feuille pour envoyer des messages plus pertinents.",
+          text: "Utilisez vos colonnes pour personnaliser chaque message.",
         },
         {
           title: "Approche minimaliste",
-          text: "Pas de backend, pas d’interface lourde, pas de distraction inutile.",
+          text: "Une interface legere, sans elements inutiles.",
         },
       ],
     },
     benefits: {
       kicker: "Bénéfices",
-      title: "Une interface conçue pour vendre sans complexifier",
-      itemText:
-        "Pensé pour réduire les frictions entre votre feuille et vos envois Gmail.",
+      title: "Une interface orientee action",
+      itemText: "Moins de clics entre votre feuille et vos envois Gmail.",
     },
     trust: {
       kicker: "Confiance",
       title: "Vos données, vos règles.",
-      text: "Le produit reste aligné avec un workflow Google simple, lisible, et rassurant.",
+      text: "Un workflow Google simple, lisible et transparent.",
       items: [
         {
           title: "OAuth Google officiel",
@@ -240,7 +253,7 @@ export const translations: Record<Lang, Translation> = {
     },
     finalCta: {
       title: "Prêt à envoyer votre première campagne en moins de 5 minutes ?",
-      text: "Installation rapide, prise en main immédiate, et un workflow qui reste lisible même pour une petite équipe.",
+      text: "Installation rapide et prise en main immediate.",
     },
     blog: {
       title: "Découvrez nos articles de blog",
@@ -251,6 +264,42 @@ export const translations: Record<Lang, Translation> = {
       privacy: "Politique de confidentialité",
       blog: "Blog",
       feedback: "Donner mon avis",
+    },
+    homeUi: {
+      reviewsNav: "Avis",
+      highlightsAriaLabel: "Points forts",
+      heroChips: ["Sans script", "100% Gmail", "Mise en route rapide"],
+      heroPreviewTitle: "Apercu de l'extension",
+      heroPreviewText: "Interface claire, envoi guide en 3 etapes.",
+      floatingNotes: ["Etape 1: connexion", "Etape 2: variables"],
+      partnerStripLabel: "Utilise par des equipes terrain",
+      logoRowAriaLabel: "Logos clients (placeholder)",
+      logoRow: [
+        "Agence Nova",
+        "Startups FR",
+        "Collectif B2B",
+        "PME Club",
+        "Edu Hub",
+      ],
+      reviewsKicker: "Validation client",
+      reviewsTitle: "Ce que disent les premiers utilisateurs",
+      testimonials: [
+        {
+          quote:
+            "On a lance une campagne en moins de 10 minutes. Le flow est limpide.",
+          author: "Sophie, agence locale",
+        },
+        {
+          quote:
+            "Enfin un outil Google Sheets vers Gmail que mon equipe peut utiliser sans support technique.",
+          author: "Karim, association",
+        },
+        {
+          quote:
+            "Simple, rapide, rassurant. Exactement ce qu il nous fallait pour nos relances.",
+          author: "Lucie, freelance",
+        },
+      ],
     },
     privacyPage: {
       eyebrow: "Politique de confidentialité",
@@ -355,8 +404,8 @@ export const translations: Record<Lang, Translation> = {
     },
     hero: {
       eyebrow: "Simple Gmail outreach from Google Sheets",
-      title: "Send personalized emails without the technical hassle.",
-      text: "GSheetMailer helps you turn a simple spreadsheet into a clean email workflow using Gmail. No scripts, no confusing setup, and no extra complexity.",
+      title: "Send personalized emails without the hassle.",
+      text: "Go from your Google Sheet to Gmail in a few clicks. No scripts and no complex setup.",
       primaryCta: "Install the Extension",
       betaCta: "Request Beta Access",
       secondaryCta: "Read Privacy Policy",
@@ -391,13 +440,13 @@ export const translations: Record<Lang, Translation> = {
       ],
     },
     preview: {
-      title: "See the product in action",
-      text: "These screenshots show the 3 key steps inside the extension experience.",
+      title: "The product in 3 screens",
+      text: "A quick view of the key steps inside the extension.",
     },
     video: {
       kicker: "Quick demo",
       title: "See GSheetMailer in action",
-      text: "A short walkthrough to understand the full workflow before you start.",
+      text: "A short walkthrough of the workflow before you start.",
       iframeTitle: "GSheetMailer explainer video",
       fallback:
         "Add a valid YouTube link in the component to display the video.",
@@ -408,28 +457,27 @@ export const translations: Record<Lang, Translation> = {
       cards: [
         {
           title: "Clear setup",
-          text: "Start quickly with a flow that feels natural and easy to follow.",
+          text: "Start quickly with a flow that is easy to follow.",
         },
         {
           title: "Personal outreach",
-          text: "Use spreadsheet data to send more relevant emails with less manual work.",
+          text: "Use spreadsheet data to personalize each email.",
         },
         {
           title: "Lightweight approach",
-          text: "No backend, no bloated interface, and no unnecessary distractions.",
+          text: "No bloated UI and no unnecessary distractions.",
         },
       ],
     },
     benefits: {
       kicker: "Benefits",
-      title: "An interface built to sell without adding complexity",
-      itemText:
-        "Designed to reduce friction between your sheet and Gmail sending.",
+      title: "An action-first interface",
+      itemText: "Fewer steps between your sheet and Gmail sending.",
     },
     trust: {
       kicker: "Trust",
       title: "Your data, your rules.",
-      text: "The product stays aligned with a simple, transparent, and reassuring Google workflow.",
+      text: "A simple, transparent, and reassuring Google workflow.",
       items: [
         {
           title: "Official Google OAuth",
@@ -473,7 +521,7 @@ export const translations: Record<Lang, Translation> = {
     },
     finalCta: {
       title: "Ready to send your first campaign in under 5 minutes?",
-      text: "Fast setup, immediate onboarding, and a workflow that stays clear even for a small team.",
+      text: "Fast setup with a clear and lightweight workflow.",
     },
     blog: {
       title: "Discover our blog articles",
@@ -484,6 +532,42 @@ export const translations: Record<Lang, Translation> = {
       privacy: "Privacy Policy",
       blog: "Blog",
       feedback: "Feedback",
+    },
+    homeUi: {
+      reviewsNav: "Reviews",
+      highlightsAriaLabel: "Highlights",
+      heroChips: ["No scripts", "100% Gmail", "Fast setup"],
+      heroPreviewTitle: "Extension preview",
+      heroPreviewText: "Clear interface, guided sending in 3 steps.",
+      floatingNotes: ["Step 1: connect", "Step 2: variables"],
+      partnerStripLabel: "Used by lean, hands-on teams",
+      logoRowAriaLabel: "Client logos (placeholder)",
+      logoRow: [
+        "Nova Agency",
+        "Startups FR",
+        "B2B Collective",
+        "SMB Club",
+        "Edu Hub",
+      ],
+      reviewsKicker: "Customer validation",
+      reviewsTitle: "What early users are saying",
+      testimonials: [
+        {
+          quote:
+            "We launched our first campaign in under 10 minutes. The flow is crystal clear.",
+          author: "Sophie, local agency",
+        },
+        {
+          quote:
+            "Finally a Google Sheets to Gmail workflow my team can run without technical help.",
+          author: "Karim, nonprofit",
+        },
+        {
+          quote:
+            "Simple, fast, and reassuring. Exactly what we needed for follow-ups.",
+          author: "Lucie, freelancer",
+        },
+      ],
     },
     privacyPage: {
       eyebrow: "Privacy Policy",

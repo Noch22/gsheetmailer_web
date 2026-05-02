@@ -246,6 +246,10 @@ const organizationJsonLd = {
 		padding: 80px 0 44px;
 	}
 
+	.hero.hero-split {
+		padding: 72px 0 34px;
+	}
+
 	.hero-bg {
 		position: absolute;
 		inset: 0;
@@ -262,6 +266,90 @@ const organizationJsonLd = {
 		text-align: center;
 	}
 
+	.hero-grid {
+		position: relative;
+		display: grid;
+		grid-template-columns: 1.05fr 0.95fr;
+		gap: 26px;
+		align-items: center;
+	}
+
+	.hero-copy {
+		text-align: left;
+	}
+
+	.hero-visual {
+		position: relative;
+		min-height: 360px;
+	}
+
+	.hero-product-card {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 22px;
+		overflow: hidden;
+		box-shadow: var(--shadow);
+	}
+
+	.hero-product-card img {
+		display: block;
+		width: 100%;
+		height: 250px;
+		object-fit: contain;
+		background: #f6f2e9;
+	}
+
+	.hero-product-copy {
+		padding: 16px;
+	}
+
+	.hero-product-copy strong {
+		display: block;
+		margin-bottom: 4px;
+	}
+
+	.hero-product-copy p {
+		margin: 0;
+	}
+
+	.hero-chips {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+		margin-top: 10px;
+	}
+
+	.hero-chips span {
+		padding: 7px 10px;
+		border-radius: 999px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: #344257;
+	}
+
+	.floating-note {
+		position: absolute;
+		padding: 9px 12px;
+		border-radius: 999px;
+		background: #fff;
+		border: 1px solid var(--line);
+		font-size: 0.8rem;
+		font-weight: 700;
+		box-shadow: 0 10px 30px rgba(23, 32, 51, 0.12);
+	}
+
+	.floating-note.top {
+		top: -10px;
+		right: 22px;
+	}
+
+	.floating-note.bottom {
+		bottom: 14px;
+		left: -10px;
+	}
+
 	h1 {
 		font-size: clamp(2.25rem, 5.8vw, 5rem);
 		line-height: 1.02;
@@ -273,15 +361,58 @@ const organizationJsonLd = {
 		font-size: clamp(1.05rem, 2vw, 1.26rem);
 		line-height: 1.7;
 		color: var(--muted);
-		max-width: 760px;
-		margin: 0 auto;
+		max-width: 62ch;
+		margin: 0;
 	}
 
 	.hero-proof {
 		font-size: 0.86rem;
 		font-weight: 600;
 		color: var(--muted);
-		margin-top: 14px;
+		margin-top: 12px;
+	}
+
+	.section-tight {
+		padding-top: 22px;
+		padding-bottom: 14px;
+	}
+
+	.section-tight-top {
+		padding-top: 20px;
+	}
+
+	.partner-strip .container {
+		border-top: 1px solid var(--line);
+		padding-top: 14px;
+	}
+
+	.strip-label {
+		font-size: 0.84rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		margin: 0 0 10px;
+		color: #6d7686;
+	}
+
+	.logo-row {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: 10px;
+	}
+
+	.logo-row span {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		min-height: 42px;
+		border-radius: 12px;
+		border: 1px solid var(--line);
+		background: var(--surface);
+		font-size: 0.86rem;
+		font-weight: 700;
+		color: #425066;
 	}
 
 	p,
@@ -519,6 +650,10 @@ const organizationJsonLd = {
 		margin-top: 20px;
 	}
 
+	.benefit-grid.benefit-grid-compact {
+		gap: 14px;
+	}
+
 	.how-card,
 	.benefit-card {
 		background: var(--surface);
@@ -567,6 +702,132 @@ const organizationJsonLd = {
 		border-radius: var(--radius);
 		padding: 18px;
 		background: rgba(255, 255, 255, 0.03);
+	}
+
+	.testimonial-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 14px;
+		margin-top: 20px;
+	}
+
+	.testimonial-card {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: 20px;
+		box-shadow: var(--shadow);
+	}
+
+	.testimonial-card p {
+		margin: 0;
+	}
+
+	.testimonial-card .stars {
+		margin-bottom: 10px;
+		color: #c8841d;
+		font-weight: 700;
+		font-size: 0.92rem;
+		letter-spacing: 0.1em;
+	}
+
+	.testimonial-card strong {
+		display: inline-block;
+		margin-top: 10px;
+		font-size: 0.9rem;
+	}
+
+	.custom-content-shell {
+		background: var(--surface);
+		border: 1px dashed #d5ccb9;
+		border-radius: 24px;
+		padding: 26px;
+	}
+
+	.custom-content-shell h2,
+	.custom-content-shell p {
+		max-width: 72ch;
+	}
+
+	.custom-content-shell p {
+		margin-top: 0;
+	}
+
+	.content-placeholder-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 12px;
+		margin-top: 18px;
+	}
+
+	.content-placeholder {
+		border: 1px dashed #cdbfa4;
+		border-radius: 14px;
+		padding: 18px;
+		background: #fcfaf5;
+		min-height: 140px;
+	}
+
+	.content-placeholder h3 {
+		margin: 0 0 8px;
+		font-size: 1rem;
+	}
+
+	.content-placeholder p {
+		margin: 0;
+	}
+
+	.reveal-up,
+	.reveal-up-delay,
+	.reveal-up-stagger {
+		opacity: 0;
+		transform: translateY(12px);
+		animation: revealUp 0.7s ease forwards;
+	}
+
+	.reveal-up-delay {
+		animation-delay: 0.14s;
+	}
+
+	.reveal-up-stagger:nth-child(2) {
+		animation-delay: 0.08s;
+	}
+
+	.reveal-up-stagger:nth-child(3) {
+		animation-delay: 0.16s;
+	}
+
+	.reveal-up-stagger:nth-child(4) {
+		animation-delay: 0.24s;
+	}
+
+	.reveal-up-stagger:nth-child(5) {
+		animation-delay: 0.32s;
+	}
+
+	.reveal-up-stagger:nth-child(6) {
+		animation-delay: 0.4s;
+	}
+
+	.float-soft {
+		animation: floatSoft 4.6s ease-in-out infinite;
+	}
+
+	@keyframes revealUp {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes floatSoft {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-6px);
+		}
 	}
 
 	.faq-wrap {
@@ -884,6 +1145,10 @@ const organizationJsonLd = {
 			gap: 0;
 		}
 
+		.hero-grid,
+		.logo-row,
+		.testimonial-grid,
+		.content-placeholder-grid,
 		.step-gallery,
 		.how-grid,
 		.benefit-grid,
@@ -894,6 +1159,29 @@ const organizationJsonLd = {
 			grid-template-columns: 1fr;
 			flex-direction: column;
 			align-items: flex-start;
+		}
+
+		.hero-copy {
+			text-align: center;
+		}
+
+		.hero-lead {
+			margin: 0 auto;
+		}
+
+		.hero-chips,
+		.actions {
+			justify-content: center;
+		}
+
+		.hero-visual {
+			min-height: 0;
+		}
+
+		.floating-note {
+			position: static;
+			display: inline-flex;
+			margin-top: 10px;
 		}
 
 		.final-cta {
@@ -920,6 +1208,17 @@ const organizationJsonLd = {
 		.article-content,
 		.post-cta {
 			padding: 20px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			animation: none !important;
+			transition: none !important;
+		}
+
+		html {
+			scroll-behavior: auto;
 		}
 	}
 </style>
