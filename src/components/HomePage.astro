@@ -29,6 +29,7 @@ const youtubeVideoId = youtubeVideoUrl.match(/(?:v=|be\/|embed\/)([A-Za-z0-9_-]{
 const youtubeEmbedUrl = youtubeVideoId
   ? `https://www.youtube-nocookie.com/embed/${youtubeVideoId}?rel=0&modestbranding=1`
   : '';
+
 ---
 
 <Layout title={t.meta.homeTitle} description={t.meta.homeDescription} path={pagePath} lang={lang}>
@@ -42,6 +43,7 @@ const youtubeEmbedUrl = youtubeVideoId
       <nav class="section-nav" aria-label={t.nav.sectionsLabel}>
         <a href="#how">{t.how.title}</a>
         <a href="#benefits">{t.benefits.kicker}</a>
+        <a href="#reviews">{t.homeUi.reviewsNav}</a>
         <a href="#trust">{t.trust.kicker}</a>
         <a href="#faq">{t.faq.kicker}</a>
       </nav>
@@ -62,21 +64,58 @@ const youtubeEmbedUrl = youtubeVideoId
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero hero-split">
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <p class="eyebrow">{t.hero.eyebrow}</p>
-        <h1>{t.hero.title}</h1>
-        <p class="hero-lead">{t.hero.text}</p>
-        <div class="actions center">
-          <!-- <a class="button primary large" href={SITE.extensionUrl} target="_blank" rel="noreferrer" data-umami-event="install_click_hero" data-umami-event-lang={lang}>{t.hero.primaryCta}</a> -->
-          <a class="button primary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_hero" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal-up">
+          <p class="eyebrow">{t.hero.eyebrow}</p>
+          <h1>{t.hero.title}</h1>
+          <p class="hero-lead">{t.hero.text}</p>
+          <div class="actions">
+            <a class="button primary large" href={SITE.betaAccessUrl} target="_blank" rel="noreferrer" data-umami-event="beta_click_hero" data-umami-event-lang={lang}>{t.hero.betaCta}</a>
+            <a class="button secondary large" href={privacyUrl} data-umami-event="privacy_click_hero" data-umami-event-lang={lang}>{t.hero.secondaryCta}</a>
+          </div>
+          <p class="hero-proof">{t.hero.proof}</p>
+          <div class="hero-chips" aria-label={t.homeUi.highlightsAriaLabel}>
+            {t.homeUi.heroChips.map((chip) => (
+              <span>{chip}</span>
+            ))}
+          </div>
         </div>
-        <p class="hero-proof">{t.hero.proof}</p>
+
+        <div class="hero-visual reveal-up-delay">
+          <article class="hero-product-card float-soft">
+            <img
+              src={stepImages[0].src}
+              alt={`${t.how.stepLabel} 1`}
+              width={stepImages[0].width}
+              height={stepImages[0].height}
+              loading="eager"
+            />
+            <div class="hero-product-copy">
+              <strong>{t.homeUi.heroPreviewTitle}</strong>
+              <p>{t.homeUi.heroPreviewText}</p>
+            </div>
+          </article>
+
+          <div class="floating-note top">{t.homeUi.floatingNotes[0]}</div>
+          <div class="floating-note bottom">{t.homeUi.floatingNotes[1]}</div>
+        </div>
       </div>
     </section>
 
-    <section class="section video-showcase">
+    <section class="section section-tight partner-strip">
+      <div class="container">
+        <p class="strip-label">{t.homeUi.partnerStripLabel}</p>
+        <div class="logo-row" aria-label={t.homeUi.logoRowAriaLabel}>
+          {t.homeUi.logoRow.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section video-showcase section-tight-top">
       <div class="container">
         <div class="video-card">
           <div class="video-copy">
@@ -105,14 +144,14 @@ const youtubeEmbedUrl = youtubeVideoId
       </div>
     </section>
 
-    <section class="container product-preview">
-      <div class="preview-copy">
+    <section id="how" class="container product-preview">
+      <div class="preview-copy reveal-up">
         <h2>{t.preview.title}</h2>
         <p>{t.preview.text}</p>
       </div>
       <div class="step-gallery">
         {t.how.steps.map((step, index) => (
-          <article class="step-shot">
+          <article class="step-shot reveal-up-stagger">
             <img
               src={stepImages[index].src}
               alt={`${t.how.stepLabel} ${index + 1}: ${step.title}`}
@@ -129,37 +168,37 @@ const youtubeEmbedUrl = youtubeVideoId
       </div>
     </section>
 
-    <section id="how" class="section section-soft">
+    <section id="benefits" class="section">
       <div class="container">
-        <p class="section-kicker">{t.how.title}</p>
-        <h2>{t.how.subtitle}</h2>
-        <div class="how-grid">
-          {t.how.steps.map((step, index) => (
-            <article class="how-card">
-              <span class="how-index">0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
+        <p class="section-kicker">{t.benefits.kicker}</p>
+        <h2>{t.benefits.title}</h2>
+        <div class="benefit-grid benefit-grid-compact">
+          {t.workflow.cards.map((card) => (
+            <article class="benefit-card reveal-up-stagger">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+          {t.why.items.map((item) => (
+            <article class="benefit-card reveal-up-stagger">
+              <h3>{item}</h3>
+              <p>{t.benefits.itemText}</p>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section id="benefits" class="section">
+    <section id="reviews" class="section section-soft">
       <div class="container">
-        <p class="section-kicker">{t.benefits.kicker}</p>
-        <h2>{t.benefits.title}</h2>
-        <div class="benefit-grid">
-          {t.workflow.cards.map((card) => (
-            <article class="benefit-card">
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-            </article>
-          ))}
-          {t.why.items.map((item) => (
-            <article class="benefit-card">
-              <h3>{item}</h3>
-              <p>{t.benefits.itemText}</p>
+        <p class="section-kicker">{t.homeUi.reviewsKicker}</p>
+        <h2>{t.homeUi.reviewsTitle}</h2>
+        <div class="testimonial-grid">
+          {t.homeUi.testimonials.map((item) => (
+            <article class="testimonial-card reveal-up-stagger">
+              <p class="stars" aria-hidden="true">★★★★★</p>
+              <p>{item.quote}</p>
+              <strong>{item.author}</strong>
             </article>
           ))}
         </div>
@@ -184,6 +223,7 @@ const youtubeEmbedUrl = youtubeVideoId
         </div>
       </div>
     </section>
+
 
     <section id="faq" class="section">
       <div class="container faq-wrap">
