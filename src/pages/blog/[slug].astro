@@ -4,6 +4,7 @@ import { getTranslation, buildUrl, type Lang } from '../../i18n/ui';
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import productIcon from '../../assets/icon128.png';
+import { isPublished } from '../../utils/publishing';
 
 
 type Props = {
@@ -12,7 +13,9 @@ type Props = {
 };
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => data.lang === 'fr' && !data.draft);
+  const posts = (await getCollection('blog', ({ data }) => data.lang === 'fr' && !data.draft)).filter((post) =>
+    isPublished(post),
+  );
 
   return posts.map((post) => ({
     params: { slug: post.id },
