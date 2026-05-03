@@ -1,17 +1,17 @@
 ---
 title: "Relance facture impayee avec Gmail et Google Sheets: methode simple"
-description: "Comment relancer des factures impayees avec Gmail et Google Sheets en restant clair, poli et organise, sans outil complexe."
-lang: "fr"
-publishDate: "2026-05-04"
+description: Comment relancer des factures impayees avec Gmail et Google Sheets
+  en restant clair, poli et organise, sans outil complexe.
+lang: fr
+publishDate: 2026-05-03
 draft: false
 keywords:
-  - "relance facture impayee gmail"
-  - "google sheets relance facture"
-  - "email relance paiement"
-  - "suivi factures impayees"
-  - "gsheetmailer"
+  - relance facture impayee gmail
+  - google sheets relance facture
+  - email relance paiement
+  - suivi factures impayees
+  - gsheetmailer
 ---
-
 Relancer une facture impayee est souvent inconfortable. Pourtant, un processus simple et regulier suffit pour recuperer plus de paiements, sans casser la relation client.
 
 Avec GSheetMailer, vous preparez votre liste dans Google Sheets puis vous envoyez des emails personnalises depuis Gmail, un par contact.
@@ -58,12 +58,15 @@ Envoyez par lots raisonnables, puis mettez a jour la colonne `Statut` apres chaq
 ## FAQ
 
 ### Combien de relances faut-il faire ?
+
 Trois relances bien espacees suffisent dans la plupart des cas.
 
 ### Puis-je segmenter par montant ?
+
 Oui, c'est meme recommande pour prioriser les factures a fort impact.
 
 ### Est-ce adapte aux petites structures ?
+
 Oui, c'est ideal pour independants, TPE et petites equipes.
 
 ## Conclusion
